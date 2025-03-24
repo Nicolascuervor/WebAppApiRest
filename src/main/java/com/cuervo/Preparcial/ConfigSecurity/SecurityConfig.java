@@ -36,11 +36,11 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll()
-                        .requestMatchers("X /**").permitAll()
+                        .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers("/empresas").hasRole("EMPRESA").anyRequest().authenticated()
+                        .requestMatchers("/OfertasEmpleo/**").permitAll()
                         .requestMatchers("/Postulaciones/**").permitAll()
-                        .requestMatchers("/api/admin/**").hasRole("ADMIN")
-                        .anyRequest().authenticated()
+                        .requestMatchers("/api/**").hasRole("ADMIN").anyRequest().permitAll()
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
