@@ -40,7 +40,7 @@ public class SecurityConfig {
                         .requestMatchers("/empresas").hasRole("EMPRESA").anyRequest().authenticated()
                         .requestMatchers("/OfertasEmpleo/**").permitAll()
                         .requestMatchers("/Postulaciones/**").permitAll()
-                        .requestMatchers("/api/**").hasRole("ADMIN").anyRequest().permitAll()
+                        .requestMatchers("/**").hasRole("ADMIN").anyRequest().permitAll()
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
